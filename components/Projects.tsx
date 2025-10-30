@@ -1,4 +1,3 @@
-
 import React from 'react';
 import type { Project } from '../types';
 
@@ -37,13 +36,27 @@ const projectsData: Project[] = [
     repoUrl: '#',
     tags: ['React', 'Firebase', 'Real-time']
   },
+  {
+    id: 5,
+    title: 'Plarail Train Showcase',
+    description: 'A video showcasing a custom-built Plarail train course, demonstrating the train running through an intricate layout.',
+    videoUrl: 'https://storage.googleapis.com/generative-ai-pro-is-cool-for-ever/video-1721207601955.mp4',
+    repoUrl: '#',
+    tags: ['Hobby Project', 'Video', 'Layout Design']
+  },
 ];
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => (
     <div className="bg-slate-800 rounded-lg overflow-hidden shadow-xl hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-2 group">
-        <div className="relative h-48 overflow-hidden">
-            <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
+        <div className="relative h-48 overflow-hidden bg-slate-700">
+            {project.videoUrl ? (
+                <video src={project.videoUrl} controls className="w-full h-full object-cover" />
+            ) : (
+                <>
+                    <img src={project.imageUrl!} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </>
+            )}
         </div>
         <div className="p-6">
             <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
